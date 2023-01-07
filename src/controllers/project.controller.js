@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 const projectmodel = mongoose.model('project');
 
 async function makeProject(req, res){
-    const { trail,host,date,participants, old} = req.body;
+    const { trail,host,description, date,participants, old} = req.body;
     try{
         var myId = mongoose.Types.ObjectId()
 
         await projectmodel.create({ 
             _id: myId,
             trail: String(trail), 
+            description: String(description),
             host: String(host), 
             date: String(date),
             old: old,

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const usermodel = mongoose.model('user');
 
 async function makeUser(req, res){
-    const { email,password,username} = req.body;
+    const { email,password,username,firstName,lastName} = req.body;
     try{
         var myId = mongoose.Types.ObjectId()
 
@@ -10,7 +10,9 @@ async function makeUser(req, res){
             _id: myId,
             email: String(email), 
             password: String(password), 
-            username: String(username)
+            username: String(username),
+            firstName: String(firstName),
+            lastName: String(lastName)
         })
         return res.json(myId)
     }

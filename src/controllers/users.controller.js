@@ -22,6 +22,39 @@ async function makeUser(req, res){
     }
 }
 
+async function authenticateUsername(req,res){
+    const {username} = req.query;
+    try{
+        var query = {username: username}
+        var users = await usermodel.find(query)
+        if(users.length>0){
+            return res.json("Username Taken") 
+        }
+        return res.json("Valid Username")
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+
+}
+
+async function authenticatePassword(req,res){
+    const {username, password} = req.query;
+    try{
+        var query = {username: username, password: password}
+        var user = await usermodel.findOne(query)
+        if(user != undefined){
+            return res.json(user._id)
+        }
+        return res.json("Incorrect Password")
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+
+}
 async function getUser(req, res){
     const {username} = req.query;
     try{
@@ -66,5 +99,7 @@ async function patchUser(req, res){
 module.exports = {
     patchUser,
     makeUser,
-    getUser
+    getUser,
+    authenticateUsername,
+    authenticatePassword
 }

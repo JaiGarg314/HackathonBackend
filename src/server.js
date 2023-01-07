@@ -3,6 +3,7 @@ require('dotenv').config();
 
 require('./models/test.model');
 require('./models/user.model');
+require('./models/trail.model');
 
 const app = require('./app');
 const mongoose = require('mongoose');
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 8080;
 const mongoUri = process.env.MONGO_URI
 //for gcloud make sure to not use env
 //const mongoUri = url here
-mongoose.connect("mongodb+srv://Jai_Garg:W4FHNONmp65IVUL6@hackathon.unfixgm.mongodb.net/HackathonProjectDatabase?retryWrites=true&w=majority");
+mongoose.connect(mongoUri);
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to mongo instance');

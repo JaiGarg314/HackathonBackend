@@ -4,6 +4,7 @@ const app = express();
 const test = require('./routes/test.routes')
 const checkServer = require('./routes/checkServer.routes')
 const user = require("./routes/user.routes")
+const trail = require("./routes/trail.routes")
 
 const cors = require('cors')
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(test)
 app.use(checkServer)
 app.use(user)
+app.use(trail)
 
 app.get('/', (req, res) => {
     const name = process.env.NAME || 'World';

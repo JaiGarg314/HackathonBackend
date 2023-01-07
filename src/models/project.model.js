@@ -13,6 +13,10 @@ const projectmodel = new mongoose.Schema({
         type: Date,
         required: false
     },
+    description:{
+        type: String,
+        required: false
+    },
     old:{
         type: Boolean,
         required: false

@@ -5,6 +5,8 @@ require('./models/test.model');
 require('./models/user.model');
 require('./models/trail.model');
 require('./models/project.model')
+require('./models/emails.model')
+
 const app = require('./app');
 const mongoose = require('mongoose');
 

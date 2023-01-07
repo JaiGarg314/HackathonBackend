@@ -15,6 +15,7 @@ async function makeTrail(req, res){
             longitude: String(longitude),
             latitude: String(latitude),
             condition: String(condition),
+            host: "", 
             reviews: reviews
         })
         return res.json(myId)
@@ -50,11 +51,29 @@ async function getZipcodeTrail(req, res){
     }
 }
 
+async function addHostTrail(req, res){
+    const {host, _id} = req.body;
+    try{
+        var query = {_id: _id}
+        trail = await trailmodel.findOne(query)
+        trail.host = host
+        trail.save()
+        return res.send(trail)
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+}
+
 async function patchTrail(req, res){
     const {_id} = req.body;
     try{
         var query = {_id: _id}
         trail = await trailmodel.findOne(query)
+        if(req.body.host != undefined){
+            trail.host = req.body.host
+        }
         if(req.body.name != undefined){
             trail.name = req.body.name
         }
@@ -91,6 +110,7 @@ async function patchTrail(req, res){
 module.exports = {
     makeTrail,
     getCityTrail,
+    addHostTrail,
     patchTrail,
     getZipcodeTrail
 }

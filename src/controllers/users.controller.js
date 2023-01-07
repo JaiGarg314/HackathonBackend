@@ -56,9 +56,9 @@ async function authenticatePassword(req,res){
 
 }
 async function getUser(req, res){
-    const {username} = req.query;
+    const {_id} = req.query;
     try{
-        var query = {username: username}
+        var query = {_id: _id}
         user = await usermodel.findOne(query)
         return res.json(user)
     }

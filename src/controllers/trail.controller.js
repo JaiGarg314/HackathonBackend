@@ -17,6 +17,7 @@ async function makeTrail(req, res){
             condition: String(condition),
             distance: distance,
             host: "", 
+            users: [],
             reviews: reviews
         })
         return res.json(myId)

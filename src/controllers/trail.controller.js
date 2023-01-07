@@ -26,7 +26,18 @@ async function makeTrail(req, res){
         res.status(422).send({ error: err.message })
     }
 }
-
+async function getIdTrail(req, res){
+    const {_id} = req.query;
+    try{
+        var query = {_id: _id}
+        trails = await trailmodel.find(query)
+        return res.json(trails)
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+}
 async function getCityTrail(req, res){
     const {city} = req.query;
     try{
@@ -119,5 +130,6 @@ module.exports = {
     getCityTrail,
     addProjectTrail,
     patchTrail,
+    getIdTrail,
     getZipcodeTrail
 }

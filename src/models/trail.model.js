@@ -9,6 +9,10 @@ const trailmodel = new mongoose.Schema({
         type: String,
         required: false
     },
+    distance:{
+        type: Number,
+        required: false
+    },
     zipcode: {
         type: Number,
         required: false

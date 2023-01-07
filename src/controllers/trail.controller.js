@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const trailmodel = mongoose.model('trail');
 
 async function makeTrail(req, res){
-    const {name,zipcode,city,state,longitude,latitude,condition, reviews} = req.body;
+    const {name,zipcode,distance, city,state,longitude,latitude,condition, reviews} = req.body;
     try{
         var myId = mongoose.Types.ObjectId()
 
@@ -15,6 +15,7 @@ async function makeTrail(req, res){
             longitude: String(longitude),
             latitude: String(latitude),
             condition: String(condition),
+            distance: distance,
             host: "", 
             reviews: reviews
         })
@@ -73,6 +74,12 @@ async function patchTrail(req, res){
         trail = await trailmodel.findOne(query)
         if(req.body.host != undefined){
             trail.host = req.body.host
+        }
+        if(req.body.distance != undefined){
+            trail.distance = req.body.distance
+        }
+        if(req.body.project != undefined){
+            trail.project = req.body.project
         }
         if(req.body.name != undefined){
             trail.name = req.body.name

@@ -38,6 +38,20 @@ async function getIdTrail(req, res){
         res.status(422).send({ error: err.message })
     }
 }
+async function addTrailReviews(req, res){
+    const {_id, reviews} = req.body;
+    try{
+        var query = {_id: _id}
+        trail = await trailmodel.findOne(query)
+        trail.reviews = trail.reviews.concat(reviews)
+        await trail.save();
+        return res.json(trail)
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+}
 async function getCityTrail(req, res){
     const {city} = req.query;
     try{
@@ -131,5 +145,6 @@ module.exports = {
     addProjectTrail,
     patchTrail,
     getIdTrail,
+    addTrailReviews,
     getZipcodeTrail
 }

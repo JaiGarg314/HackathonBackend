@@ -6,6 +6,7 @@ const{
     getZipcodeTrail,
     makeTrail,
     getIdTrail,
+    addTrailReviews,
     addProjectTrail,
     patchTrail
 }= require("../controllers/trail.controller")
@@ -17,5 +18,5 @@ trailRouter.get('/api/cityTrail', getCityTrail);
 trailRouter.get('/api/idTrail',getIdTrail)
 trailRouter.patch('/api/trail', patchTrail)
 trailRouter.patch('/api/addProjectTrail', addProjectTrail)
-
+trailRouter.post('/api/addReviews', addTrailReviews)
 module.exports = trailRouter;

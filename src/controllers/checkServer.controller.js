@@ -5,7 +5,7 @@ async function checkServer(req, res){
     try{
         var query = {tester: "true"}
         var found = await testmodel.findOne(query)
-        return res.send(found.message)
+        return res.json(found.message)
     }
     catch(err){
         console.log(err)

@@ -27,7 +27,7 @@ async function getUser(req, res){
     try{
         var query = {username: username}
         user = await usermodel.findOne(query)
-        return res.send(user)
+        return res.json(user)
     }
     catch(err){
         console.log(err)
@@ -56,7 +56,7 @@ async function patchUser(req, res){
             user.password = req.body.password
         }
         await user.save();
-        return res.send(user)
+        return res.json(user)
     }
     catch(err){
         console.log(err)

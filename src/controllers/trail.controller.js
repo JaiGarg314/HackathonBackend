@@ -32,7 +32,7 @@ async function getCityTrail(req, res){
     try{
         var query = {city: city}
         trails = await trailmodel.find(query)
-        return res.send(trails)
+        return res.json(trails)
     }
     catch(err){
         console.log(err)
@@ -44,7 +44,7 @@ async function getZipcodeTrail(req, res){
     try{
         var query = {zipcode: zipcode}
         trails = await trailmodel.find(query)
-        return res.send(trails)
+        return res.json(trails)
     }
     catch(err){
         console.log(err)
@@ -59,7 +59,7 @@ async function addProjectTrail(req, res){
         trail = await trailmodel.findOne(query)
         trail.project = project
         trail.save()
-        return res.send(trail)
+        return res.json(trail)
     }
     catch(err){
         console.log(err)
@@ -106,7 +106,7 @@ async function patchTrail(req, res){
             trail.reviews = req.body.reviews
         }
         await trail.save();
-        return res.send(trail)
+        return res.json(trail)
     }
     catch(err){
         console.log(err)

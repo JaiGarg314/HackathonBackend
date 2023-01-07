@@ -27,7 +27,7 @@ async function getProject(req, res){
     try{
         var query = {trail: trail}
         project = await projectmodel.find(query)
-        return res.send(project)
+        return res.json(project)
     }
     catch(err){
         console.log(err)
@@ -41,7 +41,7 @@ async function addProjectParticipants(req, res){
         project = await projectmodel.findOne(query)
         project.participants = project.participants.concat(participants)
         await project.save();
-        return res.send(project)
+        return res.json(project)
     }
     catch(err){
         console.log(err)
@@ -62,7 +62,7 @@ async function updateProjectStatus(req, res){
             project.old = false
         }
         await project.save();
-        return res.send(project)
+        return res.json(project)
     }
     catch(err){
         console.log(err)
@@ -91,7 +91,7 @@ async function patchProject(req, res){
         }
 
         await project.save();
-        return res.send(project)
+        return res.json(project)
     }
     catch(err){
         console.log(err)

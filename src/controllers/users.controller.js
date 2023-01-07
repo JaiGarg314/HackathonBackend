@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const usermodel = mongoose.model('user');
 
-async function user(req, res){
+async function makeUser(req, res){
     const { email,password,username} = req.body;
     try{
         var myId = mongoose.Types.ObjectId()
@@ -20,6 +20,20 @@ async function user(req, res){
     }
 }
 
+async function getUser(req, res){
+    const {username} = req.query;
+    try{
+        var query = {username: username}
+        user = await usermodel.findOne(query)
+        return res.send(user)
+    }
+    catch(err){
+        console.log(err)
+        res.status(422).send({ error: err.message })
+    }
+}
+
 module.exports = {
-    user
+    makeUser,
+    getUser
 }

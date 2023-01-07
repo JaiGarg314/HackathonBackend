@@ -2,9 +2,12 @@ const express = require('express');
 const userRouter = express.Router();
 
 const{
-    user,
+    makeUser,
+    getUser
 }= require("../controllers/users.controller")
 
-userRouter.post('/api/user', user);
+userRouter.post('/api/user', makeUser);
+userRouter.get('/api/user', getUser);
+
 
 module.exports = userRouter;

@@ -37,6 +37,12 @@ const trailmodel = new mongoose.Schema({
         type: String,
         required: false
     },
+    users:[
+        {
+            type: String,
+            required: false
+        }
+    ],
     reviews:[
         {
             type: String,

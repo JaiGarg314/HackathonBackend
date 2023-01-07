@@ -39,11 +39,12 @@ async function getIdTrail(req, res){
     }
 }
 async function addTrailReviews(req, res){
-    const {_id, reviews} = req.body;
+    const {_id, userid, reviews} = req.body;
     try{
         var query = {_id: _id}
         trail = await trailmodel.findOne(query)
         trail.reviews = trail.reviews.concat(reviews)
+        trail.users = trail.users.concat(userid)
         await trail.save();
         return res.json(trail)
     }

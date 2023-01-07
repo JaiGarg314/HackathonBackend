@@ -1,4 +1,3 @@
-const { Double, Int32 } = require('mongodb');
 const mongoose = require('mongoose');
 
 const trailmodel = new mongoose.Schema({
@@ -6,7 +5,7 @@ const trailmodel = new mongoose.Schema({
         type: String,
         required: false
     },
-    host: {
+    project: {
         type: String,
         required: false
     },

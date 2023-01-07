@@ -51,12 +51,12 @@ async function getZipcodeTrail(req, res){
     }
 }
 
-async function addHostTrail(req, res){
-    const {host, _id} = req.body;
+async function addProjectTrail(req, res){
+    const {project, _id} = req.body;
     try{
         var query = {_id: _id}
         trail = await trailmodel.findOne(query)
-        trail.host = host
+        trail.project = project
         trail.save()
         return res.send(trail)
     }
@@ -110,7 +110,7 @@ async function patchTrail(req, res){
 module.exports = {
     makeTrail,
     getCityTrail,
-    addHostTrail,
+    addProjectTrail,
     patchTrail,
     getZipcodeTrail
 }
